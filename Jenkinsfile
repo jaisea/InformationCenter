@@ -37,7 +37,7 @@ pipeline
 	      agent any 
                      steps
 		          {
-		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p 5hnTg5ciaB9WUTZrGJ=Ynz8VYBzcbF58'
+		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p 0NesCBMUZrEgQF3L2Bg+61pWHUiAgoiA'
 			    sh 'docker push dockerImage'
 			  } 
             }

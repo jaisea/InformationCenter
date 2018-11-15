@@ -34,15 +34,15 @@ pipeline
             }
 	 stage('Deploy Image') 
 	    {
-               steps
-		   {
-                      script {
-                               docker.withRegistry( '', registryCredential ) 
-			           {
-                                      dockerImage.push()
-                                   }
-                             }
-                   }
+	      agent any 
+		    {
+                     steps
+		          {
+		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p 5hnTg5ciaB9WUTZrGJ=Ynz8VYBzcbF58'
+			    sh 'docker push dockerImage
+			  }
+			    
+                    }
             }
        }
    }

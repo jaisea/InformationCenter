@@ -35,14 +35,11 @@ pipeline
 	 stage('Deploy Image') 
 	    {
 	      agent any 
-		    {
                      steps
 		          {
 		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p 5hnTg5ciaB9WUTZrGJ=Ynz8VYBzcbF58'
 			    sh 'docker push dockerImage
-			  }
-			    
-                    }
+			  } 
             }
        }
    }

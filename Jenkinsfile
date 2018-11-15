@@ -38,7 +38,7 @@ pipeline
                      steps
 		          {
 		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p 5hnTg5ciaB9WUTZrGJ=Ynz8VYBzcbF58'
-			    sh 'docker push dockerImage
+			    sh 'docker push dockerImage'
 			  } 
             }
        }

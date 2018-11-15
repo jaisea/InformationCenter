@@ -2,7 +2,7 @@ pipeline
   {
     environment 
        {
-          registry = 'tonyamoljose/ansible_poc'
+          registry = 'ansiblepocacr.azurecr.io/ansible_poc'
           registryCredential = 'dockerhub'
           dockerimage = ''
        }
@@ -38,7 +38,7 @@ pipeline
                      steps
 		          {
 		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p 0NesCBMUZrEgQF3L2Bg+61pWHUiAgoiA'
-			    sh 'docker push dockerimage'
+			    sh 'docker push ansiblepocacr.azurecr.io/ansible_poc:$BUILD_NUMBER'
 			  } 
             }
        }

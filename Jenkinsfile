@@ -4,7 +4,7 @@ pipeline
        {
           registry = 'tonyamoljose/ansible_poc'
           registryCredential = 'dockerhub'
-          dockerImage = ''
+          dockerimage = ''
        }
     agent none
     stages 
@@ -28,7 +28,7 @@ pipeline
                steps
 		   {
                       script {
-                              dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                              dockerimage = docker.build registry + ":$BUILD_NUMBER"
                              }
                    }
             }
@@ -38,7 +38,7 @@ pipeline
                      steps
 		          {
 		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p 0NesCBMUZrEgQF3L2Bg+61pWHUiAgoiA'
-			    sh 'docker push dockerImage'
+			    sh 'docker push dockerimage'
 			  } 
             }
        }

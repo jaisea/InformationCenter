@@ -3,7 +3,8 @@ pipeline
     environment 
        {
           registry = 'ansiblepocacr.azurecr.io/ansible_poc'
-          registryCredential = 'dockerhub'
+          registryCredential = 'acrcredential'
+	  dockerImage = ''
        }
     agent none
     stages 
@@ -27,18 +28,20 @@ pipeline
                steps
 		   {
                       script {
-                              docker.build registry + ":$BUILD_NUMBER"
+                              dockerImage = docker.build registry + ":$BUILD_NUMBER"
                              }
                    }
             }
 	 stage('Deploy Image') 
 	    {
-	      agent any 
-                     steps
-		          {
-		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p /qQB7Kqpd9rcmgKCZercwiq=DnyWpReU'
-			    sh 'docker push ansiblepocacr.azurecr.io/ansible_poc:$BUILD_NUMBER'
-			  } 
-            }
+                steps
+		    {
+                      script {
+                                                  
+			      docker.withRegistry( '', registryCredential ) 
+			        { dockerImage.push() }
+                             }
+                    }
+             }
        }
    }

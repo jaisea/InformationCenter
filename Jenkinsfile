@@ -36,7 +36,7 @@ pipeline
 	      agent any 
                      steps
 		          {
-		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p 0NesCBMUZrEgQF3L2Bg+61pWHUiAgoiA'
+		            sh 'docker login ansiblepocacr.azurecr.io -u ansiblePocAcr -p /qQB7Kqpd9rcmgKCZercwiq=DnyWpReU'
 			    sh 'docker push ansiblepocacr.azurecr.io/ansible_poc:$BUILD_NUMBER'
 			  } 
             }

@@ -36,8 +36,7 @@ pipeline
 	    {
                 steps
 		    {
-                      script {
-                                                  
+                      script {                     
 			      docker.withRegistry( 'https://ansiblepocacr.azurecr.io', 'acrcredential' ) 
 			        { dockerImage.push() }
                              }

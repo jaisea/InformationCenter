@@ -47,7 +47,6 @@ pipeline
 	      agent any 
                      steps
 		          {
-		            sh 'az aks get-credentials --resource-group ANSIBLE_POCTEST --name ansiblePocAks'
 			    sh 'kubectl apply -f deployment.yml'
 			  } 
             }

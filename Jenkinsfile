@@ -44,10 +44,15 @@ pipeline
              }
 	 stage('Deploy Application to AKS') 
 	    {
-            app = docker.image registry + ":$BUILD_NUMBER"
-	    docker.withRegistry( 'https://ansiblepocacr.azurecr.io', 'acrcredential' ) 
-	    app.pull()
-            sh "kubectl apply -f ."
+                steps
+		    {
+                      script {   
+                               app = docker.image registry + ":$BUILD_NUMBER"
+	                       docker.withRegistry( 'https://ansiblepocacr.azurecr.io', 'acrcredential' ) 
+		                         {app.pull()
+		                          sh "kubectl apply -f ." }
+		             }
+		    }    
             }
        }
    }

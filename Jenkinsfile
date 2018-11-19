@@ -44,13 +44,10 @@ pipeline
              }
 	 stage('Deploy Application to AKS') 
 	    {
-	      agent
-		    { steps
-		          {
-			    sh 'az aks get-credentials --resource-group ANSIBLE_POCTEST --name ansiblePocAks'
-			    sh 'kubectl apply -f deployment.yml'
-			  } 
-		    }
+            app = docker.image registry + ":$BUILD_NUMBER"
+	    docker.withRegistry( 'https://ansiblepocacr.azurecr.io', 'acrcredential' ) 
+	    app.pull()
+            sh "kubectl apply -f ."
             }
        }
    }

@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: infocenter-container
-        image: engdopaksacr.azurecr.io/apache:img_id
+        image: ansiblepocacr.azurecr.io/ansible_poc:img_id
         ports:
         - containerPort: 80
 ---

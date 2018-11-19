@@ -32,7 +32,7 @@ pipeline
                              }
                    }
             }
-	 stage('Deploy Image') 
+	 stage('Deploy Image to ACR') 
 	    {
                 steps
 		    {
@@ -42,5 +42,14 @@ pipeline
                              }
                     }
              }
+	 stage('Deploy Application to AKS') 
+	    {
+	      agent any 
+                     steps
+		          {
+		            sh 'az aks get-credentials --resource-group ANSIBLE_POCTEST --name ansiblePocAks'
+			    sh 'kubectl apply -f deployment.yml'
+			  } 
+            }
        }
    }

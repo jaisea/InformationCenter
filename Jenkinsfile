@@ -45,11 +45,12 @@ pipeline
 	 stage('Deploy Application to AKS') 
 	    {
 	      agent
-                     steps
+		    { steps
 		          {
 			    sh 'az aks get-credentials --resource-group ANSIBLE_POCTEST --name ansiblePocAks'
 			    sh 'kubectl apply -f deployment.yml'
 			  } 
+		    }
             }
        }
    }

@@ -47,7 +47,6 @@ pipeline
 		agent any    
 	      steps
 		          {
-			    sh 'strace kubectl version'
 			    sh 'kubectl apply -f deployment.yml'
 			  } 
 		    

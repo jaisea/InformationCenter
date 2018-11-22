@@ -44,8 +44,8 @@ pipeline
              }
          stage('Deploy Application to AKS') 
 	    {
-		agent docker    
-		    steps
+		    agent { docker }    
+	      steps
 		          {
 			    sh 'kubectl apply -f deployment.yml'
 			  } 

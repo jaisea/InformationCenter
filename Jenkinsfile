@@ -47,7 +47,7 @@ pipeline
 		agent any    
 	      steps
 		          {
-			    sh 'az login azurelogin'
+			    sh 'az login'
 			    sh 'az aks get-credentials --resource-group ANSIBLE_POCTEST --name ansiblePocAks'
 			    sh 'kubectl apply -f deployment.yml'
 			    sh 'kubectl get svc -w'

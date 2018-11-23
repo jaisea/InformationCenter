@@ -46,8 +46,9 @@ pipeline
 	    {
 		agent any    
 	      steps
-		          
 		    {
+		     script
+		       {
 			withAzureCLI([azureServicePrincipal('azurelogin')])
 			  {
 			    sh 'az login'
@@ -55,7 +56,8 @@ pipeline
 			    sh 'kubectl apply -f deployment.yml'
 			    sh 'kubectl get svc'
 			  } 
-		    }    
+		      } 
+		   }
             }
        }
    }

@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "kublr"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "kublr"
+    spec:
+      containers:
+        - name: "kublr"
+          image: "jaiseinfo.azurecr.io/kublr"
+          ports:
+          - containerPort: 9090
